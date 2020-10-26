@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.firedogsapp.mapper.AppMapper">
+	<insert id="insertOrderData">
+		insert into KRC_ORDER_HISTORY (company_id,
+		company_name, order_name,
+		phone_no, item, count, order_date,
+		current_status) value('10460',
+		'파이어독스', #{register_name}, #{phone_no},
+		'FD-M538', 1, now(), 0)
+	</insert>
+
+	<select id="orderList"
+		resultType="com.firedogsapp.dao.OrderListDAO">
+		select item, count, order_date from KRC_ORDER_HISTORY where company_id =
+		'10460' order by order_date DESC
+	</select>
+</mapper>

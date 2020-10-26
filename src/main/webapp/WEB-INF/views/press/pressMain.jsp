@@ -1,12 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!doctype html>
+<%@include file="../include/header.jsp"%>
+<!-- <!doctype html>
 <html lang="ko">
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
-	<!-- style & font -->
+	style & font
 	<link rel="icon" href="/img/favicon.ico">
 	<title>FIREDOGS</title>
 
@@ -105,7 +106,7 @@
 						<option>직거래 이용시 주의사항 공지.....</option>
 					</select>
 				</div>
-			</div>
+			</div> -->
 			<div id="ctab" class="ctab">
 				<ul class="tabs">
 					<li class="current"><a href="#">전체</a></li>
@@ -113,31 +114,61 @@
 				<div class="panels">
 					<div class="tabCon tab-cont01 type02 current">
 						<ul>
-							<li><a href="#">
+
+							<!-- <li><a href="http://www.gasnews.com/"> -->
+
+							<li><a href="http://www.gasnews.com/" target="_blank">
 								<span class="list-tit">
 									<span>한국가스신문사</span>
-									<span class="address">경기도 이천시 마장면 서이천로 189-11<br>대표 이윤영<span class="bar">|</span>(자) 031-634-0642</span>
+									<span class="address">서울시 구로구 디지털로 31길 19, 603호<br>발행인: 양영근<span class="bar">|</span>02)839-4000 </span>
 								</span>
 								<span class="list-frt">
-									<span class="btn-right"><img src="/resources/static/images/btn-right02.png" alt="button"></span>
+									<span class="btn-right"><img src="../resources/static/images/btn-right02.png" alt="button"></span>
 								</span>
 							</a></li>
-							<li><a href="#">
+							<li><a href="http://www.todayenergy.kr/" target="_blank">
 								<span class="list-tit">
 									<span>투데이에너지</span>
-									<span class="address">경기도 이천시 마장면 서이천로 189-11<br>대표 이윤영<span class="bar">|</span>(자) 031-634-0642</span>
+									<span class="address">서울시 강남구 논현로117길 7 대운빌딩 2층<br>발행인: 김완진<span class="bar">|</span>02)563-5291</span>
 								</span>
 								<span class="list-frt">
-									<span class="btn-right"><img src="/resources/static/images/btn-right02.png" alt="button"></span>
+									<span class="btn-right"><img src="../resources/static/images/btn-right02.png" alt="button"></span>
 								</span>
 							</a></li>
-							<li><a href="#">
+							<li><a href="http://www.e2news.com/" target="_blank">
 								<span class="list-tit">
-									<span>동아일보</span>
-									<span class="address">경기도 이천시 마장면 서이천로 189-11<br>대표 이윤영<span class="bar">|</span>(자) 031-634-0642</span>
+									<span>이투뉴스</span>
+									<span class="address">서울시 구로구 디지털로27길 36 809-2호<br>발행인: 이재욱<span class="bar">|</span>02)877-4114</span>
 								</span>
 								<span class="list-frt">
-									<span class="btn-right"><img src="/resources/static/images/btn-right02.png" alt="button"></span>
+									<span class="btn-right"><img src="../resources/static/images/btn-right02.png" alt="button"></span>
+								</span>
+							</a></li>
+							<li><a href="https://www.donga.com/" target="_blank">
+								<span class="list-tit">
+									<span>동아일보</span>
+									<span class="address">서울시 서대문구 충정로 29<br>발행인: 박원재<span class="bar">|</span>02)360-0400</span>
+								</span>
+								<span class="list-frt">
+									<span class="btn-right"><img src="../resources/static/images/btn-right02.png" alt="button"></span>
+								</span>
+							</a></li>
+							<li><a href="http://www.chosun.com/" target="_blank">
+								<span class="list-tit">
+									<span>조선일보</span>
+									<span class="address">서울시 중구 세종대로21길 30<br>발행인: 홍준호<span class="bar">|</span>02)724-5114</span>
+								</span>
+								<span class="list-frt">
+									<span class="btn-right"><img src="../resources/static/images/btn-right02.png" alt="button"></span>
+								</span>
+							</a></li>
+							<li><a href="http://www.chosun.com/" target="_blank">
+								<span class="list-tit">
+									<span>한겨레</span>
+									<span class="address">서울시 마포구 효창목길 6<br>발행인: 김현대<span class="bar">|</span>1566-9595</span>
+								</span>
+								<span class="list-frt">
+									<span class="btn-right"><img src="../resources/static/images/btn-right02.png" alt="button"></span>
 								</span>
 							</a></li>
 						</ul>
@@ -145,13 +176,25 @@
 				</div>
 			</div>
 		</div>
-		<div id="cs-num">
-			<a href="tel:1577-2361" class="cs-inner">
-				<span class="badge badge-w">대표번호</span>
-				<span class="cs-num"><img src="/resources/static/images/txt-csnum.png" alt="1577-2361"></span>
-				<span class="cs-icon"><img src="/resources/static/images/icon-csnum.png" alt="1577-2361"></span>
-			</a>
-		</div>
+		<!-- <div id="cs-num">
+	<a href="tel:1577-2361" class="cs-inner"> <span
+		class="badge badge-w">대표번호</span> <span class="cs-num"><img
+			src="../resources/static/images/txt-csnum.png" alt="1577-2361"></span>
+		<span class="cs-icon"><img
+			src="../resources/static/images/icon-csnum.png" alt="1577-2361"></span>
+	</a>
+</div> -->
+<%@include file="../include/footer.jsp"%>
 	</div>
+	
+	<script>
+	$(document).ready(function() {
+		$('#li7').addClass('current');
+	});
+	
+	$(document).ready(function() {
+		$("#txt-title").text("언론 및 신문사");
+	});
+</script>
 </body>
 </html>

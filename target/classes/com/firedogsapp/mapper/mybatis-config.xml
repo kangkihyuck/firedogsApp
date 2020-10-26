@@ -6,6 +6,7 @@
 	<typeAliases>
 		<typeAlias type="com.firedogsapp.dao.Test1DAO" alias="test1DAO" />
 		<typeAlias type="com.firedogsapp.dao.Test2DAO" alias="test2DAO" />
+		<typeAlias type="com.firedogsapp.dao.Test3DAO" alias="test3DAO" />
 	</typeAliases>
 
 </configuration>

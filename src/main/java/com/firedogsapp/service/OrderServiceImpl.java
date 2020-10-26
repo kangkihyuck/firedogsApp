@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.firedogsapp.dao.OrderListDAO;
+import com.firedogsapp.dao.OrderRequestHistoryDAO;
 import com.firedogsapp.mapper.AppMapper;
 
 import lombok.AllArgsConstructor;
@@ -18,15 +19,27 @@ public class OrderServiceImpl implements OrderService{
 	private AppMapper mapper;
 	
 	@Override
-	public void insertOrderData(String register_name, String phone_no) {
-		// TODO Auto-generated method stub
-		mapper.insertOrderData(register_name, phone_no);
-	}
-	
-	@Override
 	public List<OrderListDAO> orderList() {
 		// TODO Auto-generated method stub
 		return mapper.orderList();
+	}
+	
+	@Override
+	public OrderListDAO orderDetail(String order_seq) {
+		// TODO Auto-generated method stub
+		return mapper.orderDetail(order_seq);
+	}
+	
+	@Override
+	public List<OrderRequestHistoryDAO> orderRequestHistory() {
+		// TODO Auto-generated method stub
+		return mapper.orderRequestHistory();
+	}
+	
+	@Override
+	public void insertOrderData(String register_name, String phone_no) {
+		// TODO Auto-generated method stub
+		mapper.insertOrderData(register_name, phone_no);
 	}
 
 }

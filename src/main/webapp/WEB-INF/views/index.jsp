@@ -10,7 +10,7 @@
 	<link rel="icon" href="/img/favicon.ico">
 	<title>FIREDOGS</title>
 
-	<link rel="stylesheet" href="/resources/static/css/base.css">
+	<link rel="stylesheet" href="../resources/static/css/base.css">
 	<link rel="stylesheet" href="/resources/static/css/fonts.css">
 	<link rel="stylesheet" href="/resources/static/css/common.css">
 	<script type="text/javascript" src="/resources/static/js/jquery-1.11.1.min.js"></script>
@@ -44,12 +44,12 @@
 					<div class="login-massge txt-light"><span class="usear-name txt-bold">파이어독스</span>님 반갑습니다.</div>
 				</div>
 			</div>
-			<h2 class="txt-bold">스마트가스톡 서비스</h2>
+			<h2 class="txt-bold">가스톡 서비스</h2>
 		</header>
 		<div id="container">
 			<div class="scroll-hide">
 				<div class="inner-wrap">
-					<div class="banner">
+					<div class="banner" style="display:none">
 						<a href="#">
 							<span class="txt-light">LPG 경영관리 프로그램 / 원격검침 최강 서비스</span>
 							<span>앱으로 신청하시면 <span class="txt-black">3개월 무료</span> 서비스!</span>
@@ -65,16 +65,19 @@
 								<span class="quick-icon"><img src="/resources/static/images/icon-quick02.png" alt=""></span>
 								<span class="quick-tit">절체기</span>
 							</a></li>
+						</ul>
+						<ul>
 							<li><a href="http://gas.smartgastok.co.kr/mobile/lorry_ag">
 								<span class="quick-icon"><img src="/resources/static/images/icon-quick03.png" alt=""></span>
 								<span class="quick-tit">벌크로리</span>
+							</a></li>						
+							<li><a href="http://gas.smartgastok.co.kr/mobile/meter_ag">
+								<span class="quick-icon"><img src="/resources/static/images/icon-quick04.png" alt=""></span>
+								<span class="quick-tit">계량기</span>
 							</a></li>
+
 						</ul>
 						<ul>
-							<li class="type02"><a href="http://gas.smartgastok.co.kr/mobile/meter_ag">
-								<span class="quick-icon"><img src="/resources/static/images/icon-quick04.png" alt=""></span>
-								<span class="quick-tit">계량기<br>검침</span>
-							</a></li>
 							<li><a href="/tankinspect/tankInspectMain">
 								<span class="quick-icon"><img src="/resources/static/images/icon-quick05.png" alt=""></span>
 								<span class="quick-tit">탱크검사</span>
@@ -82,7 +85,7 @@
 							<li><a href="#">
 								<span class="quick-icon"><img src="/resources/static/images/icon-quick06.png" alt=""></span>
 								<span class="quick-tit">누설경보</span>
-							</a></li>
+							</a></li>						
 						</ul>
 					</div>
 				</div>

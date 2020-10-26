@@ -7,9 +7,9 @@
 	xmlns:aop="http://www.springframework.org/schema/aop"
 	xsi:schemaLocation="http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
-		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
-		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	<!-- MariaDB -->
@@ -18,14 +18,15 @@
 		<property name="driverClassName"
 			value="org.mariadb.jdbc.Driver" />
 		<property name="url"
-			value="jdbc:mariadb://218.38.19.160/firedogs"></property>
-		<property name="username" value="iotadm" />
+			value="jdbc:mariadb://115.68.231.149/portal_advancement"></property>
+		<property name="username" value="root" />
 		<property name="password" value="gsc1234" />
-		
+
 		<!-- 특정 시간마다 쿼리가 수행되도록 하여 커넥션이 끊기는 것을 막아준다... -->
-		<property name="validationQuery" value="select 1"/>
-		<property name="testWhileIdle" value = "true" />
-		<property name="timeBetweenEvictionRunsMillis" value="7200000" />
+		<property name="validationQuery" value="select 1" />
+		<property name="testWhileIdle" value="true" />
+		<property name="timeBetweenEvictionRunsMillis"
+			value="7200000" />
 	</bean>
 
 	<bean id="sqlSessionFactory"
@@ -41,6 +42,34 @@
 		<property name="dataSource" ref="dataSource"></property>
 	</bean>
 
+	<bean id="dataSource_Gastok"
+		class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName"
+			value="org.mariadb.jdbc.Driver" />
+		<property name="url"
+			value="jdbc:mariadb://218.38.19.160/krc_gas"></property>
+		<property name="username" value="iotadm" />
+		<property name="password" value="gsc1234" />
+
+		<!-- 특정 시간마다 쿼리가 수행되도록 하여 커넥션이 끊기는 것을 막아준다... -->
+		<property name="validationQuery" value="select 1" />
+		<property name="testWhileIdle" value="true" />
+		<property name="timeBetweenEvictionRunsMillis"
+			value="7200000" />
+	</bean>
+
+	<bean id="sqlSessionFactory_Gastok"
+		class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource_Gastok"></property>
+		<property name="typeAliasesPackage"
+			value="com.firedogsapp.gastokdao"></property>
+	</bean>
+
+	<bean id="transactionManager_Gastok"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource_Gastok"></property>
+	</bean>
+
 	<bean id="dataSource_User"
 		class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
 		<property name="driverClassName"
@@ -49,11 +78,12 @@
 			value="jdbc:mariadb://218.38.19.160/gas_user"></property>
 		<property name="username" value="iotadm" />
 		<property name="password" value="gsc1234" />
-		
+
 		<!-- 특정 시간마다 쿼리가 수행되도록 하여 커넥션이 끊기는 것을 막아준다... -->
-		<property name="validationQuery" value="select 1"/>
-		<property name="testWhileIdle" value = "true" />
-		<property name="timeBetweenEvictionRunsMillis" value="7200000" />
+		<property name="validationQuery" value="select 1" />
+		<property name="testWhileIdle" value="true" />
+		<property name="timeBetweenEvictionRunsMillis"
+			value="7200000" />
 	</bean>
 
 	<bean id="sqlSessionFactory_User"
@@ -84,6 +114,14 @@
 			value="com.firedogsapp.mapper.TestMapper" />
 		<property name="sqlSessionFactory"
 			ref="sqlSessionFactory_User"></property>
+	</bean>
+
+	<bean id="gastokMapper"
+		class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface"
+			value="com.firedogsapp.mapper.GastokMapper" />
+		<property name="sqlSessionFactory"
+			ref="sqlSessionFactory_Gastok"></property>
 	</bean>
 
 	<mybatis-spring:scan

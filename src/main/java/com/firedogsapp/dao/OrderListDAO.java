@@ -4,7 +4,10 @@ import lombok.Data;
 
 @Data
 public class OrderListDAO {
-	String order_date;
+	String order_seq;
+	String base_seq;
 	String item;
-	String count;
+	String content;
+	String reg_id;
+	String reg_date;
 }

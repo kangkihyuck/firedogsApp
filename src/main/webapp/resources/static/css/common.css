@@ -62,7 +62,7 @@ strong.stit.type02{
 .txt-demi{font-weight: 100;}
 .txt-light{font-weight: 300;}
 .txt-bold{font-weight: 700;}
-.txt-black{font-weight: 900;}
+.txt-black{font-weight: 900; margin: 0}
 
 .txt-cen{text-align: center;}
 .c-blue{color:#177ea6;}
@@ -81,10 +81,18 @@ strong.stit.type02{
 .badge.badge-b{
 	border: 2px solid #5083e3;
 	color: #5083e3;
+	background-color: #fff;
 }
 .badge.badge-w{
 	border: 2px solid #fff;
 	color: #fff;
+	background-color: #2c549f;
+}
+
+.badge.badge-b{
+	border: 2px solid #5083e3;
+	color: #5083e3;
+	background-color: #fff;
 }
 
 /* search */
@@ -225,7 +233,7 @@ strong.stit.type02{
 }
 .inner-wrap.type02{padding: 0 0 0 5%;}
 
-/* header */
+/* header  */
 header{
 	position: fixed;
 	width: 100%;
@@ -246,6 +254,7 @@ header .btn-menu{
 	width:5%;
 	margin-right: 4.9%;
 	line-height: 2.4;
+	margin-top: -5px;
 }
 header .btn-menu span{
 	display: block;
@@ -263,7 +272,7 @@ header a{
 }
 header .login-massge{
 	float: right;
-	margin-top: 6px;
+	margin-top: 0px;
 	font-size: 3.46vw;
 }
 header .login-massge span{font-size: 3.46vw;}
@@ -285,7 +294,7 @@ header h2{
 	top:0;
 	left:0;
 	width:100%;
-	padding-bottom:11.5%;
+	/* padding-bottom:11.5%; */
 	background-color: #2c549f;
 }
 .type02 #container{padding-bottom: 16vw;}
@@ -295,7 +304,7 @@ header h2{
 #wrap.hide:before,
 #wrap.type02:before,
 #wrap.hide #container:before{content:none}
-#container .scroll-hide{position:relative; width:100%; overflow:hidden;}
+#container .scroll-hide{position:relative; width:100%; overflow:hidden; margin-top:26px}
 
 #wrap.hide #container{padding-top: 4.7%;}
 #wrap.hide header h2{padding-bottom:5.4%}
@@ -327,7 +336,7 @@ header h2{
 	position: relative;
 	top: 3px;
 	width: 41.5%;
-	line-height: 3;
+	line-height: 1.5;
 }
 #cs-num .cs-icon{
 	display: block;
@@ -336,6 +345,33 @@ header h2{
 }
 
 /* common END */
+/*==========================================================================
+	SHOW Board Data
+==========================================================================*/
+.popup-modal {
+	position : relative;
+	width : 100%;
+	height : 60%;
+	padding : 10px;
+	background-color : #eee;
+	color : #000000;
+	font-size : 16px;
+}
+
+.popup-modal > .reg_id {
+	font-size : 15px;
+}
+
+.popup-modal > .title {
+	font-size:18px;
+}
+
+.popup-modal > .content {
+	font-size:15px;
+}
+
+
+
 /*==========================================================================
 	LOGIN
 ==========================================================================*/
@@ -387,7 +423,7 @@ header h2{
 }
 
 /*==========================================================================
-	01스마트가스톡서비스
+	01�뜝�럥裕욅춯�씭�쐡占쎈콦�뤆�룊�삕�뜝�럥裕욃뜝�럥苑듿뜝�럡�맋占쎈쑏熬곣뫖裕�
 ==========================================================================*/
 .banner{
 	/* height: 82px; */
@@ -421,23 +457,26 @@ header h2{
 	margin-bottom: 1.8%;
 	padding: 4% 3.2% 2%;
 	border-radius: 1vw;
-	background-color: #fff;
+	background-color:#678dd6;
 	box-shadow: 6px 6px 9px 0px rgba(0,0,0,.1);
 }
 .quick-menu ul{
 	display: table;
 	table-layout:fixed;
 	width:100%;
+	padding: 4px;
+	margin: 0;
 }
 .quick-menu ul:first-child{
-	border-bottom: 1px solid #f4f4f4;
+	/*border-bottom: 1px solid #2c549f;*/
 }
+
 .quick-menu li{
 	display:table-cell;
 	height: 100%;
 	padding-bottom: 1%;
 	vertical-align:middle;
-	border-left: 1px solid #f4f4f4;
+	border-left: 1px solid #87a6de;
 }
 
 .quick-menu li:first-child{
@@ -454,13 +493,14 @@ header h2{
 }
 .quick-menu li .quick-icon{
 	display: table-cell;
-	width:50%;
+	width:40%;
 }
 .quick-menu li .quick-tit{
 	display: table-cell;
 	width: 59%;
 	padding-left:5%;
-	font-size:3.3vw;
+	font-size:4.0vw;
+	color:#fff;
 	vertical-align: middle;
 }
 
@@ -509,6 +549,7 @@ header h2{
 .m-category li:nth-of-type(5) a::before{background-image: url(../images/icon-cate05.png);}
 .m-category li:nth-of-type(6) a::before{background-image: url(../images/icon-cate06.png);}
 .m-category li:nth-of-type(7) a::before{background-image: url(../images/icon-cate07.png);}
+.m-category li:nth-of-type(8) a::before{background-image: url(../images/icon-cate08.png);}
 .m-category li:nth-of-type(6) a::before,
 .m-category li:nth-of-type(7) a::before{margin: 4% auto 2%;}
 
@@ -524,6 +565,8 @@ header h2{
 .m-category li.current:nth-of-type(5) a::before{background-image: url(../images/icon-cate05-on.png);}
 .m-category li.current:nth-of-type(6) a::before{background-image: url(../images/icon-cate06-on.png);}
 .m-category li.current:nth-of-type(7) a::before{background-image: url(../images/icon-cate07-on.png);}
+.m-category li.current:nth-of-type(8) a::before{background-image: url(../images/icon-cate08-on.png);}
+
 
 .notice{
 	border: solid #dadada;
@@ -531,6 +574,7 @@ header h2{
 	background-color: #fff;
 	padding: 3% 0;
 	font-size: 3.46vw;
+	margin-bottom: 4px;
 }
 .notice select{
 	width: 80%;
@@ -580,7 +624,8 @@ header h2{
 }
 .ctab .panels{
 	overflow-y: scroll;
-	height:34vh;
+	/*height:34vh;*/
+	/* max-height: 300px !important; */
 	margin-top: 2px;
 }
 .ctab .tab-cont01 li{
@@ -596,15 +641,16 @@ header h2{
 	position: relative;
 	margin: 0;
 	margin-top: 3%;
+	background-color:#fff;
 }
 .ctab .tab-cont01 li a > span,
 .ctab .tab-cont01 .list-frt > span{float: left;}
 .ctab .tab-cont01 li .list-frt{
 	float: right;
-	width: 20%;
+	width: 15%;
 	margin-top: 1%;
 }
-.ctab .tab-cont01 .img-thmb{width: 50%;}
+.ctab .tab-cont01 .img-thmb{width: 50%; margin:0;}
 .ctab .tab-cont01 .img-thmb img{border-radius:.5vw;}
 .ctab .tab-cont01 span.comment{
 	float: right;
@@ -635,7 +681,7 @@ header h2{
 
 
 /*==========================================================================
-	03탱크검사
+	03�뜝�럡�떈�뜝�럡苡욥뇦猿볦삕�뜝�럡�뀬
 ==========================================================================*/
 .contents{
 	height: 100%;
@@ -660,7 +706,7 @@ header h2{
 }
 
 /*==========================================================================
-	05가입신청
+	05�뤆�룊�삕�뜝�럩肉��뜝�럥六욜춯節륁삕
 ==========================================================================*/
 .form-area{
 	min-height: 71.5vh;
@@ -741,7 +787,7 @@ header h2{
 }
 
 /*==========================================================================
-	06주문리스트
+	06�썒�슣�닑�룇占쎈뎨占쎈봾裕욃뜝�럥諭�
 ==========================================================================*/
 .ctab02{
 	position: relative;
@@ -861,7 +907,7 @@ header h2{
 	margin-top: 4%;
 }
 /*==========================================================================
-	07주문_view
+	07�썒�슣�닑�룇_view
 ==========================================================================*/
 .ctab03 .tabs{
 	overflow: hidden;
@@ -1075,7 +1121,7 @@ header h2{
 .ctab03 .tab-cont02 .dtl-bot span{color: #5e5e5e;}
 
 /*==========================================================================
-	14게시판
+	14�뇦猿딆뒩占쎈뻣�뜝�럥�냷
 ==========================================================================*/
 .form-area .col-2{width: 100%;}
 .form-area .col-2 .select-wrap{

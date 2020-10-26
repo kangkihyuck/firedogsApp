@@ -193,20 +193,78 @@
 		<div class="popup login">
 			<strong>LOGIN <span>스마트가스톡 서비스</span></strong>
 			<div class="form-area">
-				<input type="text" placeholder="아이디"> <input type="password"
-					placeholder="비밀번호">
-				<div class="btn-area">
-					<a href="#">아이디 찾기</a><span class="bar">|</span> <a href="#">비밀번호
-						찾기</a><span class="bar">|</span> <a href="/registerMember">회원가입</a>
-				</div>
+				<form role="form" id="forms" action="/account/api/processLogin"
+					method="post">
+					<div class="form-group">
+						<input type="text" value="test" name='username' id="username"
+							class="form-control" pattern="2" placeholder="아이디">
+					</div>
+					<div class="form-group">
+						<input type="password" value="1234" type="password"
+							name="password" id="password" class="form-control"
+							placeholder="비밀번호">
+					</div>
 
-				<div class = "btn-area">
-					<a href="/index">로그인</a><span class="bar"></span>
-				</div>
+
+					<div class="btn-area">
+						<a href="/searchMemberId" id="logout">아이디 찾기</a><span class="bar">|</span>
+						<a href="/searchMemberPassword">비밀번호 찾기</a><span class="bar">|</span>
+						<a href="/registerMember">회원가입</a>
+					</div>
+
+					<div class="btn-area">
+						<a href="#" onclick="processLogin()">로그인</a><span class="bar"></span>
+						<!-- onclick="document.getElementById('forms').submit();" -->
+					</div>
+				</form>
 			</div>
 		</div>
-		<a href="#" class="close"><img
+		<a href="#" class="close" onclick="backPress()"><img
 			src="/resources/static/images/btn-close.png" alt="닫기"></a>
 	</div>
+	<script type="text/javascript">
+	function backPress() {
+		window.history.back();
+	}
+	</script>
+
+	<script type="text/javascript">
+		function processLogin() {
+			$.ajax({
+	            type: "post" ,
+	            url: '/account/api/processLogin',
+	            data : $("#forms").serialize(),
+	            contentType : "application/x-www-form-urlencoded; charset=UTF-8",
+	            success: function(data){
+	                /* console.log("data.result", data.result);
+	            	if(data.result == "0000"){
+	                	console.log('data1', data);
+	                	var result = 0;
+	            		var url = "/firedogs/login/process";
+	            		console.log("formObj", formObj);
+	            		var result = valid_submit(formObj,result, url);
+	            		if(result == 0){
+	            			return false;
+	            		}
+	            		
+//	                	location.href = '/remote/successUrlCheck';
+	                } else {
+	                	alert("사용자정보가 없습니다. 사용자 정보를 확인해주세요.")
+	                } */
+	                console.log("data : " + data);
+	                if(data == "No Account") {
+	                	alert("아이디 / 비밀번호를 확인하세요.");
+	                } else {
+	                	window.location.href = 'http://localhost:8089/job/jobMain';
+	                }
+	            }
+	            ,error: function(jqXHR, textStatus, errorThrown) {
+	                console.log('jqXHR', jqXHR);
+	                console.log('textStatus', textStatus);
+	                console.log('errorThrown', errorThrown);
+	            }
+	        });
+		}
+	</script>
 </body>
 </html>
