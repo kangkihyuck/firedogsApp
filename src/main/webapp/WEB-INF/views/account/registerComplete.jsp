@@ -21,7 +21,7 @@
 		<header>
 			<div class="h-top">
 				<div class="inner-wrap">
-					<div class="btn-menu">
+					<div class="btn-menu" style="display:none;">
 						<img src="/resources/static/images/menu.png" alt="menu">
 					</div>
 					<nav id="gnb" style="display:none">
@@ -40,7 +40,7 @@
 							</li>
 						</ul>
 					</nav>
-					<h1 class="txt-black"><a href="#">파이어독스</a></h1>
+					<h1 class="txt-black"><a href="/job/jobMain">파이어독스</a></h1>
 					<div class="login-massge txt-light"><span class="usear-name txt-bold">파이어독스</span>님 반갑습니다.</div>
 				</div>
 			</div>
@@ -48,26 +48,12 @@
 		</header>
 		<div id="container">
 			<div class="contents">
-				<div class="inner-wrap">
-					<strong class="stit">가입신청</strong>
+				<div class="checked-page">
+					<strong>회원가입 완료</strong>
+					<p>스마트가스톡 서비스 가입이 완료되었습니다. <br></p>
+					<a href="/job/jobMain" class="btn-nor02 type02">메인으로 이동</a>
+					<a href="/account/login" class="btn-nor02 type02 ">로그인하기</a>
 				</div>
-				<form class="form-area">
-					<label><span class="form-tit">판매점명</span><input type="text"></label>
-					<label><span class="form-tit">사용자명</span><input type="text"></label>
-					<label><span class="form-tit">휴대폰번호</span><input type="text" class="type02"><a href="#" class="btn-nor">본인인증</a></label>
-					<label><span class="form-tit">닉네임</span><input type="text" class="type02"><a href="#" class="btn-nor">중복체크</a></label>
-					<label class="type02"><span class="form-tit">사업장주소</span>
-						<input type="text" disabled class="type02"><a href="#" class="btn-nor">우편번호검색</a>
-						<input type="text" disabled>
-						<input type="text">
-					</label>
-				</form>
-			</div>
-		</div>
-		<div class="progress-btn-area">
-			<div class="inner-wrap">
-				<!-- <a href="#" class="prev">이전</a> -->
-				<a href="#" class="next">가입신청서 전송</a>
 			</div>
 		</div>
 	</div>

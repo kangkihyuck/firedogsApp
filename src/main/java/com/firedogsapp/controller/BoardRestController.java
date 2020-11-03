@@ -16,11 +16,11 @@ import lombok.AllArgsConstructor;
 @RequestMapping("/board/api/*")
 @AllArgsConstructor
 public class BoardRestController {
-	
-	private BoardService boardService;
-	
+//	
+//	private BoardService boardService;
+//	
 //	@RequestMapping(value = "/insertBoard", method = RequestMethod.POST)
-//	public ResponseEntity<String> insertBoard(HttpServletRequest request) {
+//	public ResponseEntity<String> insertBoard(HttpServletRequest request) {   
 //		
 //		String title = request.getParameter("title");
 //		String category = request.getParameter("category");

@@ -75,7 +75,7 @@
 		<property name="driverClassName"
 			value="org.mariadb.jdbc.Driver" />
 		<property name="url"
-			value="jdbc:mariadb://218.38.19.160/gas_user"></property>
+			value="jdbc:mariadb://218.38.19.160/gas_user?allowMultiQueries=true"></property>
 		<property name="username" value="iotadm" />
 		<property name="password" value="gsc1234" />
 
@@ -123,6 +123,21 @@
 		<property name="sqlSessionFactory"
 			ref="sqlSessionFactory_Gastok"></property>
 	</bean>
+
+	<bean id="mailSender"
+		class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="smtp.gmail.com" />
+		<property name="port" value="587" />
+		<property name="username" value="oper5032@gmail.com" />
+		<property name="password" value="!!kgh1902" />
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.smtp.auth">true</prop>
+				<prop key="mail.smtp.starttls.enable">true</prop>
+			</props>
+		</property>
+	</bean>
+
 
 	<mybatis-spring:scan
 		base-package="com.firedogsapp.mapper" />

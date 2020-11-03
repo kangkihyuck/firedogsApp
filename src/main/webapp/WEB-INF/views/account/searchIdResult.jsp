@@ -21,7 +21,7 @@
 		<header>
 			<div class="h-top">
 				<div class="inner-wrap">
-					<div class="btn-menu">
+					<div class="btn-menu" style="display:none;">
 						<img src="/resources/static/images/menu.png" alt="menu">
 					</div>
 					<nav id="gnb" style="display:none">
@@ -40,7 +40,7 @@
 							</li>
 						</ul>
 					</nav>
-					<h1 class="txt-black"><a href="#">파이어독스</a></h1>
+					<h1 class="txt-black"><a href="/job/jobMain">파이어독스</a></h1>
 					<div class="login-massge txt-light"><span class="usear-name txt-bold">파이어독스</span>님 반갑습니다.</div>
 				</div>
 			</div>
@@ -49,9 +49,11 @@
 		<div id="container">
 			<div class="contents">
 				<div class="checked-page">
-					<strong>가입신청이 완료</strong>
-					<p>해당 문구는 임시문구입니다. <br>원하시는 문구로 변경 부탁드립니다.</p>
-					<a href="#" class="btn-nor02 type02">메인으로 이동</a>
+					<strong>아이디 찾기</strong>
+					<p>사용자 ID : ${user_id }<br></p>
+					<a href="/job/jobMain" class="btn-nor02 type02">메인으로 이동</a>
+					<a href="/account/login" class="btn-nor02 type02 ">로그인하기</a>
+					<a href="/account/searchPw" class="btn-nor02 type02">비밀번호 찾기</a>
 				</div>
 			</div>
 		</div>

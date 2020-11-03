@@ -15,4 +15,31 @@
 		FROM FD_USER
 		WHERE user_id = #{username} AND passwd = #{password}
 	</select>
+	
+	<select id = "select_user_id_check" resultType = "String">
+		SELECT
+		user_id
+		FROM FD_USER
+		WHERE user_id = #{checkid}
+	</select>
+	
+	<insert id = "register_member">
+		INSERT INTO FD_COMPANY (company_id, company_name, state, address, company_phone, reg_id, reg_date, service_kind, sms, department1, charge)
+		VALUES ('20001', #{company_name}, '2', #{address}, #{phone_no}, #{user_id}, NOW(), '3', '0', '1', '1');
+		
+		<!-- INSERT INTO FD_USER (user_id, company_id, passwd, user_name, phone_no, reg_date, last_login, level, state, adm_reg_seq)
+		VALUES () -->
+	</insert>
+	
+	<select id="search_id" resultType = "String">
+		SELECT user_id
+		FROM FD_USER
+		WHERE user_name = #{user_name} AND phone_no  = #{phone_no}
+	</select>
+	
+	<select id="search_pw" resultType = "String">
+		SELECT passwd
+		FROM FD_USER
+		WHERE user_id = #{user_id} AND user_name = #{user_name} AND phone_no = #{phone_no}
+	</select>
 </mapper>

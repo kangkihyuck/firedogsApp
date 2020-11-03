@@ -207,9 +207,9 @@
 
 
 					<div class="btn-area">
-						<a href="/searchMemberId" id="logout">아이디 찾기</a><span class="bar">|</span>
-						<a href="/searchMemberPassword">비밀번호 찾기</a><span class="bar">|</span>
-						<a href="/registerMember">회원가입</a>
+						<a href="/account/searchId" id="logout">아이디 찾기</a><span class="bar">|</span>
+						<a href="/account/searchPw">비밀번호 찾기</a><span class="bar">|</span>
+						<a href="/account/registerMember">회원가입</a>
 					</div>
 
 					<div class="btn-area">

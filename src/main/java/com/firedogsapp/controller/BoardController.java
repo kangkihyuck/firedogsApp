@@ -19,7 +19,7 @@ public class BoardController {
 		
 		if(null == session || "".equals(session)) {
 			// 로그인 수행 안되어 있을 시에는  login 페이지로 이동
-			return "login";
+			return "/account/login";
 		} else {
 			// 로그인 시에는 해당 페이지로 이동
 			return "board/boardWrite";
