@@ -12,4 +12,7 @@ public class JobListDAO {
 	String job_hit;
 	String job_reg_id;
 	String job_reg_date;
+	String file1;
+	String file2;
+	String file3;
 }

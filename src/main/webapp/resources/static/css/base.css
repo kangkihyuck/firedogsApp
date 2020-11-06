@@ -3,7 +3,7 @@
 /* Reset */
 * {margin: 0; padding: 0; box-sizing: border-box;}
 html { height:100%; overflow:hidden;}
-body {line-height:1.5; position:relative; height:100%; overflow:hidden;}
+body {line-height:1.2; position:relative; height:100%; overflow:hidden;}
 a{color: #000;}
 a, a:hover, a:active {text-decoration: none;}
 ul,ol{list-style: none;}

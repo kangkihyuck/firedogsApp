@@ -13,4 +13,5 @@ public class OrderRequestHistoryDAO {
 	String cnt;
 	String reg_id;
 	String reg_date;
+	String image;
 }

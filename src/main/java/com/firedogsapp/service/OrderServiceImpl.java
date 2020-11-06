@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.firedogsapp.dao.OrderListDAO;
+import com.firedogsapp.dao.OrderRequestDAO;
 import com.firedogsapp.dao.OrderRequestHistoryDAO;
 import com.firedogsapp.mapper.AppMapper;
 
@@ -19,9 +20,15 @@ public class OrderServiceImpl implements OrderService{
 	private AppMapper mapper;
 	
 	@Override
-	public List<OrderListDAO> orderList() {
+	public List<OrderListDAO> orderList(OrderRequestDAO orderRequest) {
 		// TODO Auto-generated method stub
-		return mapper.orderList();
+		return mapper.orderList(orderRequest);
+	}
+	
+	@Override
+	public List<OrderListDAO> orderList_flag(String flag) {
+		// TODO Auto-generated method stub
+		return mapper.orderList_flag(flag);
 	}
 	
 	@Override
@@ -31,15 +38,20 @@ public class OrderServiceImpl implements OrderService{
 	}
 	
 	@Override
-	public List<OrderRequestHistoryDAO> orderRequestHistory() {
+	public void order_register(OrderRequestHistoryDAO orderRequest) {
 		// TODO Auto-generated method stub
-		return mapper.orderRequestHistory();
+		mapper.order_register(orderRequest);
 	}
 	
 	@Override
-	public void insertOrderData(String register_name, String phone_no) {
+	public List<OrderRequestHistoryDAO> order_register_history(String reg_id) {
 		// TODO Auto-generated method stub
-		mapper.insertOrderData(register_name, phone_no);
+		return mapper.order_register_history(reg_id);
 	}
-
+	
+	@Override
+	public void order_cancel(String order_his_seq) {
+		// TODO Auto-generated method stub
+		mapper.order_cancel(order_his_seq);
+	}
 }

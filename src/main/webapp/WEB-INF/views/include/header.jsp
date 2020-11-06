@@ -21,8 +21,14 @@
 <script type="text/javascript" src="../resources/static/js/common.js"></script>
 <title>Insert title here</title>
 </head>
+<style>
+.ieOverflowY {
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+</style>
 <body>
-	<div id="wrap">
+	<div id="wrap" class="wrap">
 		<header>
 			<div class="h-top">
 				<div class="inner-wrap">
@@ -44,7 +50,7 @@
 						</ul>
 					</nav>
 					<h1 class="txt-black">
-						<a href="/job/jobMain">파이어독스</a>
+						<a href="/market/marketMain">파이어독스</a>
 					</h1>
 
 					<div class="login-massge txt-light" id="userAC">
@@ -57,7 +63,7 @@
 						<a href="/account/login" v-if="false"
 							style="font-weight: bold; margin-left: 10px">로그인</a> -->
 						<c:choose>
-						
+
 							<c:when test="${sessionScope.username != null}">
 								<span class="user-name txt-bold" style="margin-top: -10px;">${sessionScope.username}님
 									반갑습니다.</span>
@@ -84,7 +90,7 @@
 		<div id="top"></div>
 
 		<div id="container">
-			<div id="topdiv">
+			<div id="topdiv" class="topdiv">
 				<div class="scroll-hide">
 					<div class="inner-wrap">
 						<div class="banner" style="display: none">
@@ -123,12 +129,12 @@
 
 							</ul>
 							<ul>
-								<li><a href="/tankinspect/tankInspectMain"> <span
+								<li><a href="#" onclick="modal()"> <span
 										class="quick-icon"><img
 											src="../resources/static/images/icon-quick05.png" alt=""></span>
 										<span class="quick-tit">탱크검사</span>
 								</a></li>
-								<li><a href="#"> <span class="quick-icon"><img
+								<li><a href="#" onclick="modal()"> <span class="quick-icon"><img
 											src="../resources/static/images/icon-quick06.png" alt=""></span>
 										<span class="quick-tit">누설경보</span>
 								</a></li>
@@ -137,20 +143,27 @@
 					</div>
 				</div>
 				<ul class="m-category">
-					<!--<li id="li1"><a href="/firedogs/order/getOrderList">주문</a></li>-->
-					<li id="li1"><a href="#" onclick="modal()">주문</a></li>
 					<li id="li3"><a href="/market/marketMain">사고/팔고</a></li>
 					<li id="li2"><a href="/job/jobMain">구인/구직</a></li>
-					<li id="li4"><a href="/lpgdisclosure/lpgDisclosureMain">LPG
+					<li id="li1"><a href="/order/orderMain">주문</a></li>
+					<li id="li8" style="display: none;"><a href="#"
+						onclick="modal()">공지사항</a></li>
+					<li id="li1" style="display: none;"><a href="#" /></li>
+					<li id="li1" style="display: none;">><a href="#" /></li>
+					<li id="li1" style="display: none;">><a href="#" /></li>
+					<li id="li1"><a href="/notice/noticeMain">공지사항</a></li>
+
+					<!--<li id="li1"><a href="/firedogs/order/getOrderList">주문</a></li>-->
+					<!-- <li id="li4"><a href="/lpgdisclosure/lpgDisclosureMain">LPG
 							공시가</a></li>
 					<li id="li5"><a href="/inspect/inspectMain">검사기관</a></li>
 					<li id="li6"><a href="/lpginsandorg/lpginsandorgMain">LPG기관<br>및
 							단체
 					</a></li>
 					<li id="li7"><a href="/press/pressMain">언론<br>및 신문사
-					</a></li>
+					</a></li> -->
 					<!--<li id="li8"><a href="/firedogs/notice/getNoticeList">공지사항</a></li>-->
-					<li id="li8"><a href="#" onclick="modal()">공지사항</a></li>
+
 				</ul>
 				<div class="notice" style="display: none">
 					<div class="inner-wrap">
@@ -178,5 +191,7 @@
 					el.scrollIntoView(true);
 				}
 			</script>
+
+		
 </body>
 </html>

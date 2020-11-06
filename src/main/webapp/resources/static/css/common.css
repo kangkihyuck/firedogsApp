@@ -17,7 +17,7 @@ body{
 body.popup{overflow: hidden;}
 body, input, select, button, textarea {
 	color:#141414;
-	font-size:3.20vw;
+	/* font-size:3.20vw; */
 	font-family: 'Noto Sans KR', sans-serif;
 	font-weight: 400;
 }
@@ -223,7 +223,7 @@ strong.stit.type02{
 	top: 0;
 	width: 100%;
 	height: 37vw;
-	background-color: #2c549f;
+	/* background-color: #fff; */
 }
 #wrap.type02{min-height: 100vh;}
 
@@ -247,7 +247,7 @@ header .h-top{
 }
 header .inner-wrap{
 	overflow:hidden;
-	padding:4.35% 5% 2.2%
+	padding:1.5% 3% 2%
 }
 header .btn-menu{
 	float: left;
@@ -260,7 +260,7 @@ header .btn-menu span{
 	display: block;
 	width:100%;
 	height:2px;
-	margin: 5px 0;
+	margin: 0;
 	background-color:#fff;
 	text-indent: -9999px;
 }
@@ -545,7 +545,7 @@ header h2{
 }
 .m-category li:nth-of-type(2) a::before{background-image: url(../images/icon-cate02.png);}
 .m-category li:nth-of-type(3) a::before{background-image: url(../images/icon-cate03.png);}
-.m-category li:nth-of-type(4) a::before{background-image: url(../images/icon-cate04.png);}
+.m-category li:nth-of-type(4) a::before{background-image: url(../images/icon-cate08.png);}
 .m-category li:nth-of-type(5) a::before{background-image: url(../images/icon-cate05.png);}
 .m-category li:nth-of-type(6) a::before{background-image: url(../images/icon-cate06.png);}
 .m-category li:nth-of-type(7) a::before{background-image: url(../images/icon-cate07.png);}
@@ -561,11 +561,12 @@ header h2{
 .m-category li.current:nth-of-type(1) a::before{background-image: url(../images/icon-cate01-on.png);}
 .m-category li.current:nth-of-type(2) a::before{background-image: url(../images/icon-cate02-on.png);}
 .m-category li.current:nth-of-type(3) a::before{background-image: url(../images/icon-cate03-on.png);}
-.m-category li.current:nth-of-type(4) a::before{background-image: url(../images/icon-cate04-on.png);}
+.m-category li.current:nth-of-type(4) a::before{background-image: url(../images/icon-cate08-on.png);}
 .m-category li.current:nth-of-type(5) a::before{background-image: url(../images/icon-cate05-on.png);}
 .m-category li.current:nth-of-type(6) a::before{background-image: url(../images/icon-cate06-on.png);}
 .m-category li.current:nth-of-type(7) a::before{background-image: url(../images/icon-cate07-on.png);}
 .m-category li.current:nth-of-type(8) a::before{background-image: url(../images/icon-cate08-on.png);}
+
 
 
 .notice{

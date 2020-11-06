@@ -238,7 +238,6 @@
 					} else {
 						alert("비밀번호 / 비밀번호 확인이 일치하지 않습니다.");
 					}
-					
 				}
 				, error : function(jqXHR, textStatus, errorThrown) {
 	                console.log('jqXHR', jqXHR);

@@ -25,7 +25,7 @@
 		<header>
 			<div class="h-top">
 				<div class="inner-wrap">
-					<div class="btn-menu">
+					<div class="btn-menu"  style="display: none">
 						<img src="/resources/static/images/menu.png" alt="menu">
 					</div>
 					<nav id="gnb" style="display: none">
@@ -43,10 +43,22 @@
 						</ul>
 					</nav>
 					<h1 class="txt-black">
-						<a href="#">파이어독스</a>
+						<a href="/market/marketMain">파이어독스</a>
 					</h1>
 					<div class="login-massge txt-light">
-						<span class="usear-name txt-bold">파이어독스</span>님 반갑습니다.
+						<c:choose>
+						
+							<c:when test="${sessionScope.username != null}">
+								<span class="user-name txt-bold" style="margin-top: -10px;">${sessionScope.username}님
+									반갑습니다.</span>
+								<a href="/account/logout"
+									style="font-weight: bold; margin-left: 10px;">로그아웃</a>
+							</c:when>
+							<c:otherwise>
+								<a href="/account/login" v-if="false"
+									style="font-weight: bold; margin-left: 10px">로그인</a>
+							</c:otherwise>
+						</c:choose>
 					</div>
 				</div>
 			</div>
@@ -60,21 +72,23 @@
 				</ul>
 				<div class="panels">
 					<div class="tabCon tab-cont01 current">
+
 						<div class="pdt-img">
-							<img src="/resources/static/images/img-product01.jpg"
-								alt="FD-538">
+							<img src="..\resources\static\images/${orderDetail.image }"
+								alt="${orderDetail.item}">
 						</div>
 						<dl class="pdt-desc">
 							<dt>
-								파이어독스<em>FD-538</em>
+								${orderDetail.reg_id }<em>${orderDetail.item}</em>
 							</dt>
-							<dd>국내 모든 소형저장탱크의 가스잔량 층정이 가능한 디지털 게이지</dd>
+							<dd>${orderDetail.contents}</dd>
 						</dl>
+
 						<div class="cs-num-s">
-							<span class="cs-icon"><img
+							<a href="tel:1577-2361"><span class="cs-icon"><img
 								src="/resources/static/images/icon-csnum-s.png" alt="1577-2361"></span>
 							<span class="cs-num"><img
-								src="/resources/static/images/txt-csnum-s.png" alt="1577-2361"></span>
+								src="/resources/static/images/txt-csnum-s.png" alt="1577-2361"></span></a>
 						</div>
 						<div class="sell-form">
 							<input class="form-input" type="text" placeholder="구매자명"
@@ -83,9 +97,9 @@
 							<div>
 								<div class="num-pdt">
 									<span class="minus"><a href="#"><img
-											src="/resources/static/images/btn-minus.png" alt="minus"></a></span>
-									<span>1</span> <span class="plus"><a href="#"><img
-											src="/resources/static/images/btn-plus.png" alt="plus"></a></span>
+											src="/resources/static/images/btn-minus.png" alt="minus" onclick="minus()"></a></span>
+									<span id="num" ref="num">1</span> <span class="plus"><a href="#"><img
+											src="/resources/static/images/btn-plus.png" alt="plus" onclick="add()"></a></span>
 								</div>
 								<div class="btn-sell" id="orderRequest">
 									<a href="#">구매요청</a>
@@ -96,36 +110,38 @@
 					<div class="tabCon tab-cont02">
 						<div class="lookup-area inner-wrap">
 							<strong class="stit type02">주문내역 조회</strong>
-							<div class="btn-radio">
+							<div class="btn-radio" style="display:none;">
 								<label><input type="radio" name="lookup" checked><span
 									class="checkmark">날짜</span></label> <label><input type="radio"
 									name="lookup"><span class="checkmark">시간</span></label> <label><input
 									type="radio" name="lookup"><span class="checkmark">모델명</span></label>
 							</div>
-							<div class="search-area date">
+							<div class="search-area date" style="display:none;">
 								<input type="text"> <a href="#"><img
 									src="/resources/static/images/btn-date.png" alt="날짜검색"></a>
 							</div>
 						</div>
 						<ul class="order-list">
-							<c:forEach items="${orderList}" var="orderList">
+							<c:forEach items="${orderRegisterHistory}" var="orderRegisterHistory" varStatus = "status">
 								<li>
 									<div class="order-details">
 										<span class="thmb-img"><img
-											src="/resources/static/images/img-product01.jpg" alt="thmb"></span>
+											src="..\resources\static\images/${orderRegisterHistory.image }" alt="thmb"></span>
 										<div>
 											<div class="dtl-top">
-												<em>116</em><span><c:out value="${orderList.order_date }" /><span class="bar">
+												<em>${status.count}</em><span><c:out
+														value="${orderRegisterHistory.reg_date }" /><span class="bar">
 												</span>
 											</div>
 											<div class="dtl-bot">
-												<strong><c:out value="${orderList.item }" /></strong><span><c:out value="${orderList.count }" />개</span>
+												<strong><c:out value="${orderRegisterHistory.item }" /></strong><span><c:out
+														value="${orderRegisterHistory.cnt }" />개</span>
 											</div>
 										</div>
 									</div>
 									<div class="btn-area">
-										<a href="#" class="btn-nor02">교환요청</a><a href="#"
-											class="btn-nor02">구매취소</a>
+										<a href="#" class="btn-nor02" onclick="order_update()">교환요청</a><a href="#"
+											class="btn-nor02" onclick="order_cancel(${orderRegisterHistory.order_his_seq})">구매취소</a>
 									</div>
 								</li>
 							</c:forEach>
@@ -150,31 +166,25 @@
 							function() {
 								var register_name = $("#register_name").val();
 								var phone_no = $("#phone_no").val();
+								var num =  document.getElementById('num').innerText;
 
 								console.log(register_name);
 								console.log(phone_no);
+								console.log(num);
 
 								$.ajax({
-									url : '/order/orderRequest',
-									type : 'GET',
+									url : '/order/api/order_register',
+									type : 'POST',
 									data : "register_name=" + register_name
-											+ "&phone_no=" + phone_no,
+											+ "&phone_no=" + phone_no
+											+ "&num=" + num
+											+ "&order_seq=" + ${orderDetail.order_seq},
 									success : function(result) {
-										if (result) {
-											if (register_name != ""
-													&& phone_no != "") {
-												alert("주문이 완료되었습니다.");
-											} else if (register_name != ""
-													&& phone_no == "") {
-												alert("전화번호를 입력해주세요.");
-											} else if (register_name == ""
-													&& phone_no != "") {
-												alert("구매자명을 입력해주세요.");
-											} else {
-												alert("구매자 정보를 입력해주세요.");
-											}
+										if("200" == result) {
+											alert("주문이 완료되었습니다.");
+											window.location.href = "/order/orderDetail?order_seq=" + ${orderDetail.order_seq}
 										} else {
-											alert("잠시 후 다시 시도해 주세요.");
+											alert("주문이 정상 수행되지 않았습니다.");
 										}
 									},
 									error : function() {
@@ -185,5 +195,72 @@
 							});
 				});
 	</script>
+	
+	<script>
+		function order_cancel(order_his_seq) {
+			
+			if(confirm("주문을 취소하시겠습니까?")) {
+				$.ajax({
+					type:"post",
+					url:'/order/api/order_cancel?order_his_seq=' + order_his_seq,
+					data : order_his_seq,
+					success : function(data) {
+						if("200" == data) {
+							alert("주문 취소가 정상 처리 되었습니다.");
+							window.location.href = "/order/orderDetail?order_seq=" + ${orderDetail.order_seq}
+						} else {
+							alert("주문 취소를 실패하였습니다.\n잠시후 다시 시도해주세요.");
+						}
+					},
+					error : function(jqXHR, textStatus, errorThrown) {
+						console.log('jqXHR', jqXHR);
+						console.log('textStatus', textStatus);
+						console.log('errorThrown', errorThrown);
+					}
+				});
+			} else {
+				alert("취소되었습니다.");
+			}
+		}
+	</script>
+	
+	<script>
+		function order_update() {
+			console.log("주문 업데이트 관련 로직 추가되어야 함. (div태크 활용한 modal창)");
+			alert("현재 준비중입니다.");
+		}
+	</script>
+	
+	<script>
+	function add() {
+		
+		var num = document.getElementById('num').innerHTML;
+		console.log("num : " + num);
+	
+		var add = parseInt(num) + parseInt("1");
+		
+		console.log("add = " +add);
+		
+		$("#num").text(add).val();
+	}
+	
+	function minus() {
+		
+		var num = document.getElementById('num').innerHTML;
+		console.log("num : " + num);
+		
+		if(parseInt(num) <= 1) {
+			alert("수량을 감소할 수 없습니다.");
+		} else {
+			var add = parseInt(num) - parseInt("1");
+		
+			console.log("add = " +add);
+		
+			$("#num").text(add).val();
+		}
+		
+		
+	}
+</script>
 </body>
 </html>

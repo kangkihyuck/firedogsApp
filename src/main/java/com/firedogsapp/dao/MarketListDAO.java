@@ -12,4 +12,7 @@ public class MarketListDAO {
 	String deal_hit;
 	String deal_reg_id;
 	String deal_reg_date;
+	String file1;
+	String file2;
+	String file3;
 }

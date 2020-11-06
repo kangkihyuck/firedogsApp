@@ -13,11 +13,11 @@
 		<div class="tabCon tab-cont01 current">
 			<ul>
 				<c:forEach var="marketList" items="${marketList}" varStatus="status">
-					<li><a href="#" onclick="handle_toggle(${status.index} + 1)"> <strong class="badge">${marketList.deal_type}</strong>
-							<span class="list-tit"> <span>${marketList.deal_title}</span>
-								<span class="date">${marketList.deal_reg_date}<span
-									class="bar">|</span>조회 : ${marketList.deal_hit}<span
-									class="bar">|</span>${marketList.deal_reg_id}
+					<li><a href="#" onclick="handle_toggle(${status.index} + 1)">
+							<strong class="badge">${marketList.deal_type}</strong> <span
+							class="list-tit"> <span>${marketList.deal_title}</span> <span
+								class="date">${marketList.deal_reg_date}<span class="bar">|</span>조회
+									: ${marketList.deal_hit}<span class="bar">|</span>${marketList.deal_reg_id}
 							</span>
 						</span> <span class="list-frt"> <span class="btn-right"><img
 									src="../resources/static/images/btn-right02.png" alt="button"></span>
@@ -31,6 +31,25 @@
 						<p class="title">${marketList.deal_title}</p>
 						내용
 						<p class="content" html="${marketList.deal_memo}">${marketList.deal_memo}</p>
+						<c:set var="file1" value="${marketList.file1 }" />
+						<c:if test="${file1 ne null}">
+						파일1
+						<img src="..\resources\static\upload/${marketList.file1 }"
+								width:"25%" height:"25%" alt="표시할 수 없음" />
+						</c:if>
+
+						<c:set var="file2" value="${marketList.file2 }" />
+						<c:if test="${file2 ne null}">
+						파일2
+						<img src="..\resources\static\upload/${marketList.file2 }"
+								width:"25%" height:"25%" alt="표시할 수 없음" />
+						</c:if>
+						<c:set var="file3" value="${marketList.file3 }" />
+						<c:if test="${file3 ne null}">
+						파일3
+						<img src="..\resources\static\upload/${marketList.file3 }"
+								width:"25%" height:"25%" alt="표시할 수 없음" />
+						</c:if>
 						<button @click="handle_toggle" type="button">확인</button>
 					</div>
 				</c:forEach>
@@ -38,10 +57,12 @@
 		</div>
 		<div class="tabCon tab-cont01">
 			<ul>
-				<c:forEach var="marketList1" items="${marketList1}" varStatus="status">
-					<li><a href="#" onclick="handle_toggle1(${status.index} + 1)"> <strong class="badge">${marketList1.deal_type}</strong>
-							<span class="list-tit"> <span>${marketList1.deal_title}</span>
-								<span class="date">${marketList1.deal_reg_date}<span
+				<c:forEach var="marketList1" items="${marketList1}"
+					varStatus="status">
+					<li><a href="#" onclick="handle_toggle1(${status.index} + 1)">
+							<strong class="badge">${marketList1.deal_type}</strong> <span
+							class="list-tit"> <span>${marketList1.deal_title}</span> <span
+								class="date">${marketList1.deal_reg_date}<span
 									class="bar">|</span>조회 : ${marketList1.deal_hit}<span
 									class="bar">|</span>${marketList1.deal_reg_id}
 							</span>
@@ -49,15 +70,46 @@
 									src="../resources/static/images/btn-right02.png" alt="button"></span>
 						</span>
 					</a></li>
+					<div id="boardLi-${status.index + 1}" class="listMainClass"
+						style="display: none;">
+						작성자
+						<p class="reg_id">${marketList1.deal_reg_id}</p>
+						제목
+						<p class="title">${marketList1.deal_title}</p>
+						내용
+						<p class="content" html="${marketList1.deal_memo}">${marketList1.deal_memo}</p>
+						<c:set var="file1" value="${marketList1.file1 }" />
+						<c:if test="${file1 ne null}">
+						파일1
+						<img src="..\resources\static\upload/${marketList1.file1 }"
+								width:"25%" height:"25%" alt="표시할 수 없음" />
+						</c:if>
+
+						<c:set var="file2" value="${marketList1.file2 }" />
+						<c:if test="${file2 ne null}">
+						파일2
+						<img src="..\resources\static\upload/${marketList1.file2 }"
+								width:"25%" height:"25%" alt="표시할 수 없음" />
+						</c:if>
+						<c:set var="file3" value="${marketList1.file3 }" />
+						<c:if test="${file3 ne null}">
+						파일3
+						<img src="..\resources\static\upload/${marketList1.file3 }"
+								width:"25%" height:"25%" alt="표시할 수 없음" />
+						</c:if>
+						<button @click="handle_toggle" type="button">확인</button>
+					</div>
 				</c:forEach>
 			</ul>
 		</div>
 		<div class="tabCon tab-cont01">
 			<ul>
-				<c:forEach var="marketList2" items="${marketList2}" varStatus="status">
-					<li><a href="#" onclick="handle_toggle2(${status.index} + 1)"> <strong class="badge badge-b">${marketList2.deal_type}</strong>
-							<span class="list-tit"> <span>${marketList2.deal_title}</span>
-								<span class="date">${marketList2.deal_reg_date}<span
+				<c:forEach var="marketList2" items="${marketList2}"
+					varStatus="status">
+					<li><a href="#" onclick="handle_toggle2(${status.index} + 1)">
+							<strong class="badge badge-b">${marketList2.deal_type}</strong> <span
+							class="list-tit"> <span>${marketList2.deal_title}</span> <span
+								class="date">${marketList2.deal_reg_date}<span
 									class="bar">|</span>조회 : ${marketList2.deal_hit}<span
 									class="bar">|</span>${marketList2.deal_reg_id}
 							</span>
@@ -65,6 +117,35 @@
 									src="../resources/static/images/btn-right02.png" alt="button"></span>
 						</span>
 					</a></li>
+					<div id="boardLi_${status.index + 1}" class="listMainClass"
+						style="display: none;">
+						작성자
+						<p class="reg_id">${marketList2.deal_reg_id}</p>
+						제목
+						<p class="title">${marketList2.deal_title}</p>
+						내용
+						<p class="content" html="${marketList2.deal_memo}">${marketList2.deal_memo}</p>
+						<c:set var="file1" value="${marketList2.file1 }" />
+						<c:if test="${file1 ne null}">
+						파일1
+						<img src="..\resources\static\upload/${marketList2.file1 }"
+								width:"25%" height:"25%" alt="표시할 수 없음" />
+						</c:if>
+
+						<c:set var="file2" value="${marketList2.file2 }" />
+						<c:if test="${file2 ne null}">
+						파일2
+						<img src="..\resources\static\upload/${marketList2.file2 }"
+								width:"25%" height:"25%" alt="표시할 수 없음" />
+						</c:if>
+						<c:set var="file3" value="${marketList2.file3 }" />
+						<c:if test="${file3 ne null}">
+						파일3
+						<img src="..\resources\static\upload/${marketList2.file3 }"
+								width:"25%" height:"25%" alt="표시할 수 없음" />
+						</c:if>
+						<button @click="handle_toggle" type="button">확인</button>
+					</div>
 				</c:forEach>
 			</ul>
 		</div>

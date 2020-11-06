@@ -185,18 +185,18 @@ public class AccountRestController {
 			} else {
 				responseData = "success";
 				// email 전송 로직 기능 구현
-				final MimeMessagePreparator preparator = new MimeMessagePreparator() {
-					@Override
-					public void prepare(MimeMessage mimeMessage) throws Exception {
-						final MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true, "UTF-8");
-						helper.setFrom("oper5032@gmail.com");
-						helper.setTo("kkh@gloscom.com");
-						helper.setSubject("테스트");
-						helper.setText("내용입니다.", true);
-					}
-				};
-
-				mailSender.send(preparator);
+//				final MimeMessagePreparator preparator = new MimeMessagePreparator() {
+//					@Override
+//					public void prepare(MimeMessage mimeMessage) throws Exception {
+//						final MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true, "UTF-8");
+//						helper.setFrom("oper5032@gmail.com");
+//						helper.setTo("kkh@gloscom.com");
+//						helper.setSubject("테스트");
+//						helper.setText("내용입니다.", true);
+//					}
+//				};
+//
+//				mailSender.send(preparator);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

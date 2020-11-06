@@ -19,10 +19,30 @@
 		item,
 		contents,
 		reg_id,
-		reg_date
+		reg_date,
+		image
 		FROM
 		TBL_ORDER
 		where use_yn = 'Y'
+		<if test="keyword != null and keyword != ''">
+                AND item like CONCAT('%', #{keyword}, '%')
+        </if>
+		order by reg_date DESC
+	</select>
+
+	<select id="orderList_flag"
+		resultType="com.firedogsapp.dao.OrderListDAO">
+		SELECT
+		order_seq,
+		base_seq,
+		item,
+		contents,
+		reg_id,
+		reg_date,
+		image
+		FROM
+		TBL_ORDER
+		where use_yn = 'Y' AND base_seq = #{flag}
 		order by reg_date DESC
 	</select>
 
@@ -34,13 +54,22 @@
 		item,
 		contents,
 		reg_id,
-		reg_date
+		reg_date,
+		image
 		FROM
 		TBL_ORDER
 		where order_seq = #{order_seq}
 	</select>
 
-	<select id="orderRequestHistory"
+	<insert id="order_register">
+		INSERT INTO TBL_ORDER_HISTORY (order_seq,
+		company_name, phone_no, item, cnt, use_yn, reg_id, reg_date) VALUES
+		(#{order_seq}, #{company_name}, #{phone_no}, (SELECT item FROM
+		TBL_ORDER where order_seq = #{order_seq}), #{cnt}, 'Y', #{reg_id},
+		now())
+	</insert>
+
+	<select id="order_register_history"
 		resultType="com.firedogsapp.dao.OrderRequestHistoryDAO">
 		SELECT
 		order_his_seq,
@@ -51,50 +80,73 @@
 		item,
 		cnt,
 		reg_id,
-		reg_date
-		FROM TBL_ORDER_HISTORY
+		reg_date,
+		(SELECT image FROM TBL_ORDER where
+		order_seq = TBL_ORDER_HISTORY.order_seq) as image
+		FROM
+		TBL_ORDER_HISTORY
+		WHERE reg_id = #{reg_id} AND use_yn = 'Y'
 		ORDER BY reg_date DESC
 	</select>
 	
-	<select id = "jobList" resultType = "com.firedogsapp.dao.JobListDAO">
+	<update id="order_cancel">
+		UPDATE TBL_ORDER_HISTORY set use_yn = 'N'
+		WHERE order_his_seq = #{order_his_seq}
+	</update>
+
+	<select id="jobList" resultType="com.firedogsapp.dao.JobListDAO">
 		SELECT
 		job_no,
 		CASE WHEN job_type = 'I' THEN '구인'
-		ELSE '구직' END AS job_type,
+		ELSE '구직' END AS
+		job_type,
 		job_user_id,
-		job_title,
+		if(CHAR_LENGTH(job_title) > 18,
+		concat(LEFT(job_title,18),"...") , job_title) as job_title,
 		job_memo,
 		job_hit,
 		job_reg_date,
-		job_reg_id
+		job_reg_id,
+		file1,
+		file2,
+		file3
 		FROM TBL_JOB
-		WHERE job_use_yn = 'Y'
+		WHERE
+		job_use_yn = 'Y'
 		<if test="flag eq '0'.toString()"></if>
 		<if test="flag eq '1'.toString()">AND job_type = 'I'</if>
 		<if test="flag eq '2'.toString()">AND job_type = 'S'</if>
 		ORDER BY job_reg_date DESC
 	</select>
-	
-	<select id = "marketList" resultType = "com.firedogsapp.dao.MarketListDAO">
+
+	<select id="marketList"
+		resultType="com.firedogsapp.dao.MarketListDAO">
 		SELECT
 		deal_no,
 		CASE WHEN deal_type = 'S' THEN '팝니다'
-		ELSE '삽니다' END AS deal_type,
+		ELSE '삽니다' END AS
+		deal_type,
 		deal_user_id,
-		deal_title,
+		if(CHAR_LENGTH(deal_title) > 18,
+		concat(LEFT(deal_title,18),"...") , deal_title) as deal_title,
 		deal_memo,
 		deal_hit,
 		deal_reg_id,
-		deal_reg_date
-		FROM TBL_DEAL
+		deal_reg_date,
+		file1,
+		file2,
+		file3
+		FROM
+		TBL_DEAL
 		WHERE deal_use_yn = 'Y'
 		<if test="flag eq '0'.toString()"></if>
 		<if test="flag eq '1'.toString()">AND deal_type = 'S'</if>
 		<if test="flag eq '2'.toString()">AND deal_type = 'B'</if>
-		ORDER BY deal_reg_date DESC 
+		ORDER BY deal_reg_date DESC
 	</select>
-	
-	<select id = "lpgDisclosureList" resultType = "com.firedogsapp.dao.LpgDisclosureListDAO">
+
+	<select id="lpgDisclosureList"
+		resultType="com.firedogsapp.dao.LpgDisclosureListDAO">
 		SELECT
 		initial_no,
 		initial_title,
@@ -103,31 +155,36 @@
 		initial_reg_id,
 		initial_reg_date
 		FROM TBL_LPG_INITIAL
-		WHERE initial_use_yn = 'Y'
+		WHERE
+		initial_use_yn = 'Y'
 		ORDER BY initial_reg_date DESC
 	</select>
-	
-	<select id = "inspectionList" resultType = "com.firedogsapp.dao.InspectionListDAO">
+
+	<select id="inspectionList"
+		resultType="com.firedogsapp.dao.InspectionListDAO">
 		SELECT
-		CASE WHEN gas_cat = 'a3' OR gas_cat = 'a4' OR gas_cat = 'a5' THEN 'LPG용기'
-		ELSE '특정 설비' END AS gas_cat, 
+		CASE WHEN gas_cat = 'a3' OR gas_cat = 'a4' OR gas_cat = 'a5'
+		THEN 'LPG용기'
+		ELSE '특정 설비' END AS gas_cat,
 		gas_title,
-		gas_memo, 
-		gas_hit, 
-		gas_reg_id, 
+		gas_memo,
+		gas_hit,
+		gas_reg_id,
 		gas_reg_date
 		FROM TBL_GAS_REL
 		WHERE gas_use_yn = 'Y'
 		<if test="flag eq '0'.toString()"></if>
-		<if test="flag eq '1'.toString()">AND (gas_cat != 'a3' AND gas_cat != 'a4' AND gas_cat != 'a5')</if>
-		<if test="flag eq '2'.toString()">AND (gas_cat = 'a3' OR gas_cat = 'a4' OR gas_cat = 'a5')</if>
-		<!-- <if test="search_text != null and search_text != ''">
-            AND gas_title like CONCAT('%', #{search_text}, '%')
-        </if> -->
-        ORDER BY gas_no DESC
+		<if test="flag eq '1'.toString()">AND (gas_cat != 'a3' AND gas_cat != 'a4' AND gas_cat !=
+			'a5')</if>
+		<if test="flag eq '2'.toString()">AND (gas_cat = 'a3' OR gas_cat = 'a4' OR gas_cat = 'a5')
+		</if>
+		<!-- <if test="search_text != null and search_text != ''"> AND gas_title 
+			like CONCAT('%', #{search_text}, '%') </if> -->
+		ORDER BY gas_no DESC
 	</select>
-	
-	<select id = "tankInspectionList" resultType = "com.firedogsapp.dao.TankInspectListDAO">
+
+	<select id="tankInspectionList"
+		resultType="com.firedogsapp.dao.TankInspectListDAO">
 		SELECT
 		gas_no,
 		gas_cat,
@@ -138,6 +195,42 @@
 		gas_reg_date
 		FROM TBL_GAS_REL
 		WHERE gas_use_yn = 'Y'
-		ORDER BY gas_reg_date DESC
+		ORDER BY
+		gas_reg_date DESC
+	</select>
+
+	<insert id="insert_board_data">
+		INSERT INTO TBL_DEAL
+		(deal_type, deal_user_id, deal_title, deal_memo, deal_writer, deal_phone,
+		deal_hit, deal_use_yn, deal_reg_id, deal_reg_date, file1, file2,
+		file3)
+		VALUES (#{category}, #{user_id}, #{title}, #{contents},
+		#{user_id}, #{phone_no}, '0', 'Y', #{user_id}, now(), #{file1},
+		#{file2}, #{file3})
+	</insert>
+
+	<insert id="insert_board_job_data">
+		INSERT INTO TBL_JOB
+		(job_type, job_user_id, job_title,
+		job_memo, job_writer, job_phone, job_hit, job_use_yn, job_reg_id,
+		job_reg_date, file1, file2, file3)
+		VALUES (#{category}, #{user_id},
+		#{title}, #{contents}, #{user_id}, #{phone_no}, '0', 'Y', #{user_id},
+		now(), #{file1}, #{file2}, #{file3})
+	</insert>
+	
+	<select id = "select_notice" resultType = "com.firedogsapp.dao.NoticeListDAO">
+		SELECT
+		notice_no,
+		notice_type,
+		notice_user_id,
+		notice_title,
+		notice_memo,
+		notice_hit,
+		notice_reg_id,
+		notice_reg_date
+		FROM TBL_NOTICE
+		WHERE notice_use_yn = 'Y'
+		ORDER BY notice_reg_date DESC
 	</select>
 </mapper>
