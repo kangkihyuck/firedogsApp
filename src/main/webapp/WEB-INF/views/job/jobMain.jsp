@@ -210,7 +210,7 @@
 	}
 </script>
 
-<script>
+<!-- <script>
 $(document).ready(function() {
 	$("#txt-title").text("구인/구직");
 	document.querySelector('.cs-num').scrollIntoView(true);
@@ -220,7 +220,7 @@ $(document).ready(function() {
 	}, 100);
 
 });
-</script>
+</script> -->
 
 </body>
 </html>

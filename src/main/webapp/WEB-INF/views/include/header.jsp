@@ -81,8 +81,8 @@
 			<div class="inner-wrap">
 				<h2 class="txt-bold" id="txt-title">&nbsp;</h2>
 				<button class="btn btn-sm btn-default"
-					style="float: right; margin: -40px 0px 0 0; font-weight: bold"
-					id="btn_menu" onClick="topScroll()">
+					style="float: right; margin: -30px 0px 0 0; font-weight: bold; color:#FFF"
+					id="btn_menu" onClick="topScroll()";>
 					맨위로 <i class="fa fa-angle-double-up"></i>
 				</button>
 			</div>

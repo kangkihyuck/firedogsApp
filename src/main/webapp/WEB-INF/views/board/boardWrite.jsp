@@ -41,7 +41,7 @@
 						</ul>
 					</nav>
 					<h1 class="txt-black">
-						<a href="/job/jobMain">파이어독스</a>
+						<a href="/market/marketMain">파이어독스</a>
 					</h1>
 					<div class="login-massge txt-light">
 						<span class="usear-name txt-bold">${sessionScope.username}</span>님
@@ -134,7 +134,7 @@
 	        var data = new FormData(form);
 
 	        // If you want to add an extra field for the FormData
-	        data.append("file1", "gg"); 
+	        //data.append("file1", "gg"); 
 
 			if (null == title || '' == title || null == user_id
 					|| '' == user_id || null == contents || '' == contents) {

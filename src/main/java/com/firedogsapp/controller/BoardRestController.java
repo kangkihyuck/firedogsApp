@@ -39,7 +39,8 @@ public class BoardRestController {
 
 
 		for (int i = 0; i < file1.length; i++) {
-			File saveFile = new File("C:\\Users\\FD-02\\Documents\\workspace-sts-3.9.8.RELEASE\\FiredogsAppProject01\\src\\main\\webapp\\resources\\static\\upload", file1[i].getOriginalFilename());
+//			File saveFile = new File("C:\\Users\\FD-02\\Documents\\workspace-sts-3.9.8.RELEASE\\FiredogsAppProject01\\src\\main\\webapp\\resources\\static\\upload", file1[i].getOriginalFilename());
+			File saveFile = new File("\\usr\\local\\tomcat\\webapps\\FiredogsAppProject01\\resources\\static\\upload", file1[i].getOriginalFilename());
 			System.out.println("파일이름 : " + file1[i].getOriginalFilename());
 
 			if(null != file1[i].getOriginalFilename() && !"".equals(file1[i].getOriginalFilename())) {

@@ -30,7 +30,7 @@ public class AccountController {
 	public String logout(HttpSession httpSession) {
 		httpSession.setAttribute("username", null);
 
-		return "redirect:/job/jobMain";
+		return "redirect:/market/marketMain";
 	}
 
 	@RequestMapping(value = "/registerMember", method = RequestMethod.GET)

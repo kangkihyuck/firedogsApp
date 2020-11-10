@@ -41,7 +41,7 @@
 						</ul>
 					</nav>
 					<h1 class="txt-black">
-						<a href="#">파이어독스</a>
+						<a href="/market/marketMain">파이어독스</a>
 					</h1>
 					<div class="login-massge txt-light">
 						<span class="usear-name txt-bold">파이어독스</span>님 반갑습니다.
@@ -255,7 +255,7 @@
 	                if(data == "No Account") {
 	                	alert("아이디 / 비밀번호를 확인하세요.");
 	                } else {
-	                	window.location.href = 'http://localhost:8089/job/jobMain';
+	                	window.location.href = '/market/marketMain';
 	                }
 	            }
 	            ,error: function(jqXHR, textStatus, errorThrown) {
